@@ -10,8 +10,13 @@ const Goods = lazy(()=> import("@/pages/layout/components/goods/Goods.jsx"))
 const Edit = lazy(()=> import("@/pages/layout/components/edit/Edit.jsx"))
 const Order = lazy(()=> import("@/pages/layout/components/order/Order.jsx"))
 const User = lazy(()=> import("@/pages/layout/components/user/User.jsx"))
+const LoginLog = lazy(()=> import("@/pages/layout/components/login-log/LoginLog.jsx"))
 
 const router = createBrowserRouter([
+  {
+    path:"/",
+    element:<Entrance/>
+  },
   {
     path:"/layout",
     element: <AuthRoute><Layout/></AuthRoute>,
@@ -20,6 +25,10 @@ const router = createBrowserRouter([
         index:true,
         // path:'/',
         element: <Suspense fallback={'加载中'}><Show/></Suspense> 
+      },
+      {
+        path:'user',
+        element: <Suspense fallback={'加载中'}><User/></Suspense> 
       },
       {
         path:'goods',
@@ -34,15 +43,12 @@ const router = createBrowserRouter([
         element: <Suspense fallback={'加载中'}><Order/></Suspense> 
       },
       {
-        path:'user',
-        element: <Suspense fallback={'加载中'}><User/></Suspense> 
+        path:'login-log',
+        element: <Suspense fallback={'加载中'}><LoginLog/></Suspense> 
       }
     ]
   },
-  {
-    path:"/",
-    element:<Entrance/>
-  }
+
 ])
 
 export default router

@@ -215,7 +215,7 @@ const User = () => {
           </div>
         </Form>
 
-        <Button type="primary" icon={<PlusCircleOutlined />} className='add' onClick={handleAddUser}>
+        <Button type="primary" icon={<UserAddOutlined />} className='add' onClick={handleAddUser}>
           添加账号
         </Button>
 

@@ -4,7 +4,7 @@ import {
   AppstoreOutlined,
   FormOutlined,
   SnippetsOutlined,
-  UserOutlined,
+  TeamOutlined,
   LogoutOutlined,
 } from '@ant-design/icons'
 import './Layout.scss'
@@ -24,7 +24,7 @@ const items = [
   {
     label: '账号管理',
     key: '/layout/user',
-    icon: <UserOutlined />,
+    icon: <TeamOutlined />,
   },
   {
     label: '商品管理',
@@ -39,6 +39,11 @@ const items = [
   {
     label: '订单管理',
     key: '/layout/order',
+    icon: <SnippetsOutlined />,
+  },
+  {
+    label: '登录日志',
+    key: '/layout/login-log',
     icon: <SnippetsOutlined />,
   },
 ]

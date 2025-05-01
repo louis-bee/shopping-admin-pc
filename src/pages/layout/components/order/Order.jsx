@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getOrderListAPI, deliveryAPI } from '@/apis/order'
-import moment from 'moment'
 
 const Order = () => {
 
@@ -52,7 +51,6 @@ const Order = () => {
     {
       title: '交易时间',
       dataIndex: 'time',
-      render: data => moment(data).format('YYYY-MM-DD')
     },
     {
       title: '状态',
