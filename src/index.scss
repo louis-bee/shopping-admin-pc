@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  font-family: '"Microsoft Yahei", "yahei", "Helvetica Neue", Helvetica, Arial, sans-serif';
+  word-break: break-all;
+  line-height: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+body,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,h2,h3,h4,h5,p {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+}
