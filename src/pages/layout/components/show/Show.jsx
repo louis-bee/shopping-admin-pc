@@ -1,19 +1,19 @@
-import axios from "axios"
-import { useEffect } from "react"
+import { Card } from "antd";
+import './Show.scss'
+import MonthLogin from "./components/MonthLogin";
+import HotGoods from "./components/HotGoods";
 
 const Show = () => {
 
-  useEffect(()=>{
-
-    const res = axios.post(`${import.meta.env.VITE_API_URL}/`,{},{
-      headers:{
-        Authorizon: localStorage.getItem('token')
-      }
-    })
-    console.log(res.data);
-    
-  },[])
-
-  return <div>数据展示页</div>
+  return (
+    <div>
+      <Card title='数据中心' >
+        <div className="box">
+          <MonthLogin />
+          <HotGoods />
+        </div>
+      </Card>  
+    </div>
+  )
 }
 export default Show

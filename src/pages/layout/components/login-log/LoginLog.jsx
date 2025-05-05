@@ -54,9 +54,9 @@ const LoginLog = () => {
       render: data => {
         return (
           <Space size="middle">
-            <Popover content={'查看操作日志'} placement="top">
+            {/* <Popover content={'查看操作日志'} placement="top">
               <Button type="primary" shape="circle" icon={<SnippetsOutlined />} onClick={()=>viewActionLog(data.userId)}/>
-            </Popover>
+            </Popover> */}
             <Popconfirm
               title="删除日志"
               description="确认要删除该条日志吗?"
