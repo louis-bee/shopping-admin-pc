@@ -1,4 +1,4 @@
-import { request } from "@/utils";
+import { request } from "@/utils/request";
 
 export function getOrderListAPI(params) {
   return request({
