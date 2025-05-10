@@ -49,7 +49,7 @@ const Login = ({setTab}) => {
       <h1>管理员登录</h1>
       <Form
         className="form"
-        initialValues={{ account: 'superAdmin', pwd: '123123' }}
+        initialValues={{ account: '', pwd: '' }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
