@@ -182,9 +182,6 @@ const User = () => {
     setInitUserInfo(userInfo)
   }
   const handleAddUser = ()=>{
-    // setInitUserInfo({}); // 清空表单初始值
-    // editForm.resetFields(); // 重置表单字段
-    // editForm.setFieldValue('account','')
     setInitUserInfo({role:params.role,userName:'', account:'',balance:0,pwd:'',pwd2:'',id:''})
     editForm.setFieldsValue({role:params.role,userName:'', account:'',balance:0,pwd:'',pwd2:'',id:''})
     setIsEditModalOpen(true)

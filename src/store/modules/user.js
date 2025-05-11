@@ -41,7 +41,6 @@ const fetchLogin = (loginForm) =>{
   return async (dispatch)=>{
     const res = await loginAPI(loginForm)
     if(res.status===200) {
-      // dispatch(setToken(res.data.token))
       const userInfo = {
         id: res.data.id,
         userName: res.data.userName,

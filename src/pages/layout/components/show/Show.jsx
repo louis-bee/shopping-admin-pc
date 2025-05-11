@@ -4,7 +4,6 @@ import MonthLogin from "./components/MonthLogin";
 import HotGoods from "./components/HotGoods";
 
 const Show = () => {
-
   return (
     <div>
       <Card title='数据中心' >

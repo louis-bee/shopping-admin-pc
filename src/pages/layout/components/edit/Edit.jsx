@@ -23,26 +23,11 @@ const { Option } = Select
 const Edit = () => {
   const Navigate = useNavigate()
   const typeList = [
-    {
-      "id": 1,
-      "name": "唱片"
-    },
-    {
-      "id": 2,
-      "name": "衣饰"
-    },
-    {
-      "id": 3,
-      "name": "日用品"
-    },
-    {
-      "id": 4,
-      "name": "其它"
-    },
-    {
-      "id": 5,
-      "name": "特价"
-    },
+    { "id": 1, "name": "唱片" },
+    { "id": 2, "name": "衣饰" },
+    { "id": 3, "name": "日用品" },
+    { "id": 4, "name": "其它" },
+    { "id": 5, "name": "特价" },
   ]
 
   const [store, setStore] = useState({view:0,sales:0,sellerId:''})
