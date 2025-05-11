@@ -16,6 +16,7 @@ import 'react-quill/dist/quill.snow.css'
 import { useState, useEffect } from 'react'
 import { addGoodsAPI, getGoodsByIdAPI, updateGoodsAPI } from '@/apis/goods'
 import { refreshTokenAPI } from '@/apis/user'
+import { useSelector } from 'react-redux'
 
 const { Option } = Select
 
@@ -46,8 +47,10 @@ const Edit = () => {
 
   const [store, setStore] = useState({view:0,sales:0,sellerId:''})
 
+  const userId =  useSelector(state => state.user.userInfo.id)
+
   const onFinish = async (form) =>{
-    const params = {
+    const goodsInfo = {
       sellerId: store.sellerId,
       goodsName: form.goodsName,
       price: form.price,
@@ -65,13 +68,12 @@ const Edit = () => {
       view: store.view,
       sales: store.sales,
     }
-    console.log(params.images);
-    
+    console.log(goodsInfo.images);
     let res = null
     if(goodsId) {
-      res = await updateGoodsAPI({...params, id:goodsId})
+      res = await updateGoodsAPI({goodsInfo:{...goodsInfo, id:goodsId},role:3,userId:userId})
     } else {
-      res = await addGoodsAPI(params)
+      res = await addGoodsAPI({goodsInfo, role:3,userId:userId})
     }
     if(res.status===200) {
       message.success(res.desc)

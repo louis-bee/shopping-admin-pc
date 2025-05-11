@@ -15,7 +15,7 @@ const HotGoods = () => {
   useEffect(() => {
     async function getData() {
       const params = {
-        sellerId: userId
+        adminId: userId
       };
       const res = await getTopSellerAPI(params);
       if (res.status === 200) {

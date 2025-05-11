@@ -6,6 +6,8 @@ import {
   SnippetsOutlined,
   TeamOutlined,
   LogoutOutlined,
+  DatabaseOutlined,
+  UnorderedListOutlined
 } from '@ant-design/icons'
 import './Layout.scss'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
@@ -44,7 +46,12 @@ const items = [
   {
     label: '登录日志',
     key: '/layout/login-log',
-    icon: <SnippetsOutlined />,
+    icon: <UnorderedListOutlined />,
+  },
+  {
+    label: '操作日志',
+    key: '/layout/action-log',
+    icon: <DatabaseOutlined />,
   },
 ]
 

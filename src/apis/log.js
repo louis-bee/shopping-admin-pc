@@ -15,3 +15,19 @@ export function delLoginLogAPI(params) {
     data: params
   })
 }
+
+export function getActionLogListAPI(params) {
+  return request({
+    url:'log/getActionLogList',
+    method:'POST',
+    data: params
+  })
+}
+
+export function delActionLogAPI(params) {
+  return request({
+    url:'log/delActionLog',
+    method:'POST',
+    data: params
+  })
+}

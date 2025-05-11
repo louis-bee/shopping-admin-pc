@@ -1,14 +1,14 @@
-import './LoginLog.scss'
+import './ActionLog.scss'
 import { useNavigate } from 'react-router-dom'
-import { Card, Input, Form, Button, Radio, Popconfirm, message, Popover } from 'antd'
+import { Card, Input, Form, Button, Radio, Select, Popconfirm, message, Popover } from 'antd'
 // 导入资源
 import { Table, Tag, Space } from 'antd'
 import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
-import {getLoginLogListAPI, delLoginLogAPI } from '@/apis/log'
+import {getActionLogListAPI, delActionLogAPI } from '@/apis/log'
 import { useSelector } from 'react-redux'
 
-const LoginLog = () => {
+const ActionLog = () => {
 
   const Navigate = useNavigate()
 
@@ -18,6 +18,21 @@ const LoginLog = () => {
     3: <Tag color="processing">管理人员</Tag>,
   }
 
+    const typeType = {
+    1: <Tag color="processing">查询</Tag>,
+    2: <Tag color="success">插入</Tag>,
+    3: <Tag color="warning">更新</Tag>,
+    4: <Tag color="red">删除</Tag>,
+  }
+
+  const typeList = [
+    { "id": 0, "name": "全部"},
+    { "id": 1, "name": "查询"},
+    { "id": 2, "name": "插入"},
+    { "id": 3, "name": "更新"},
+    { "id": 4, "name": "删除"},
+  ]
+
   const columns = [
     {
       title: 'id',
@@ -25,16 +40,8 @@ const LoginLog = () => {
       width: 70
     },
     {
-      title: '账号id',
+      title: '用户',
       dataIndex: 'userId'
-    },
-    {
-      title: '账号',
-      dataIndex: 'account',
-    },
-    {
-      title: '用户名',
-      dataIndex: 'userName',
     },
     {
       title: '角色',
@@ -42,13 +49,19 @@ const LoginLog = () => {
       render: data => roleType[data]
     },
     {
-      title: '登录时间',
-      dataIndex: 'loginTime'
+      title: '操作',
+      dataIndex: 'message',
     },
     {
-      title: '登出时间',
-      dataIndex: 'logoutTime'
+      title: '类型',
+      dataIndex: 'type',
+      render: data => typeType[data]
     },
+    {
+      title: '操作时间',
+      dataIndex: 'time'
+    },
+
     {
       title: '操作',
       render: data => {
@@ -81,13 +94,14 @@ const LoginLog = () => {
 
   const [ params, setParams ] = useState({
     adminId: userId,
-    search: '',
     role: 1,
+    type: null,
+    search: null,
   }) 
 
   useEffect(()=>{
     async function getList() {
-      const res = await getLoginLogListAPI(params)
+      const res = await getActionLogListAPI(params)
       setList(res.data.list || [])
       setCount(res.data.total)
     }
@@ -97,18 +111,23 @@ const LoginLog = () => {
   const [form] = Form.useForm();
 
   const handleRoleChange = ()=>{
-    console.log(form.role);
-    
     setParams({
       ...params,
       role: form.getFieldValue('role'),
-      search: '',
+    })
+  }
+
+  const handleTypeChange = ()=>{
+    setParams({
+      ...params,
+      type: form.getFieldValue('type'),
     })
   }
 
   const onFinish = () =>{
     setParams({
       ...params,
+      type: form.getFieldValue('type'),
       role: form.getFieldValue('role'),
       search: form.getFieldValue('search'),
     })
@@ -116,10 +135,10 @@ const LoginLog = () => {
 
   const delLog = async (id)=>{
     const delParams = {
-      logId: id,
+      actionId: id,
       adminId: userId
     }
-    const res = await delLoginLogAPI(delParams)
+    const res = await delActionLogAPI(delParams)
     if(res.status===200) {
       message.success('已删除一条日志')
       const newList = list.filter(item=>item.id!==id)
@@ -136,7 +155,7 @@ const LoginLog = () => {
 
   return (
     <div>
-      <Card title='登录日志'>
+      <Card title='操作日志'>
 
       <Form initialValues={{ role: 1 }} form={form} onFinish={onFinish}>
           <Form.Item label="角色" name="role">
@@ -146,9 +165,14 @@ const LoginLog = () => {
               <Radio value={3}>管理人员</Radio>
             </Radio.Group>
           </Form.Item>
+          <Form.Item label="类型" name="type">
+            <Select placeholder="全部" style={{ width: 100 }} onChange={handleTypeChange}>
+              {typeList.map(item=><Option key={item.id} value={item.id}>{item.name}</Option>)}
+            </Select>
+          </Form.Item>
           <div className="search-box">
             <Form.Item label="搜索" name="search">
-              <Input className='search' placeholder="输入用户id" allowClear onPressEnter={onFinish} onClear={handleRoleChange}/>
+              <Input className='search' placeholder="按用户id搜索" allowClear onPressEnter={onFinish} onClear={onFinish}/>
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit" icon={<SearchOutlined />} shape="circle" className='but'></Button>
@@ -165,4 +189,4 @@ const LoginLog = () => {
   )
 }
 
-export default LoginLog
+export default ActionLog

@@ -86,11 +86,12 @@ const Order = () => {
   const sellerId = searchParams.get('sellerId')
 
   const [ params, setParams ] = useState({
-    role: 2,
+    role: 3,
     pageSize: 10,
     pageNum: 1,
     type: goodsId ? 'goods' : consumerId ? 'consumer' : sellerId ? 'seller' : '',
-    search: goodsId ? goodsId : consumerId ? consumerId : sellerId ? sellerId : ''
+    search: goodsId ? goodsId : consumerId ? consumerId : sellerId ? sellerId : '',
+    userId: userId,
   }) 
 
   useEffect(()=>{
@@ -105,7 +106,8 @@ const Order = () => {
   const delivery = async (id)=>{
     const params = {
       orderId: id,
-      sellerId: userId
+      userId: userId,
+      role: 3,
     }
     const res = await deliveryAPI(params)
     if(res.status===200) {

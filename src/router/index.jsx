@@ -11,6 +11,7 @@ const Edit = lazy(()=> import("@/pages/layout/components/edit/Edit.jsx"))
 const Order = lazy(()=> import("@/pages/layout/components/order/Order.jsx"))
 const User = lazy(()=> import("@/pages/layout/components/user/User.jsx"))
 const LoginLog = lazy(()=> import("@/pages/layout/components/login-log/LoginLog.jsx"))
+const ActionLog = lazy(()=> import("@/pages/layout/components/action-log/ActionLog.jsx"))
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:'login-log',
         element: <Suspense fallback={'加载中'}><LoginLog/></Suspense> 
+      },
+      {
+        path:'action-log',
+        element: <Suspense fallback={'加载中'}><ActionLog/></Suspense> 
       }
     ]
   },

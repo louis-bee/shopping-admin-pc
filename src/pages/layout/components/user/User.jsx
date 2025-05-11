@@ -1,9 +1,9 @@
-import { data, Link, useNavigate } from 'react-router-dom'
-import { Card, Input, Form, Button, Radio, DatePicker, Select, Popconfirm, message, Popover, Modal, InputNumber } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { Card, Input, Form, Button, Radio, Select, Popconfirm, message, Popover, Modal, InputNumber } from 'antd'
 import './User.scss'
 // 导入资源
 import { Table, Tag, Space } from 'antd'
-import { EditOutlined, DeleteOutlined, SearchOutlined, UserAddOutlined, PlusCircleOutlined, SnippetsOutlined } from '@ant-design/icons'
+import { EditOutlined, DeleteOutlined, SearchOutlined, UserAddOutlined, SnippetsOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
 import { getUserListAPI, delUserAPI, editUserAPI } from '@/apis/user'
 import { useSelector } from 'react-redux'
@@ -81,12 +81,15 @@ const User = () => {
     }
   ]
 
+  const userId =  useSelector(state => state.user.userInfo.id)
+
   const [ list, setList] = useState([])
   const [count, setCount] = useState(0)
   
   const [ params, setParams ] = useState({
     search: '',
     role: 1,
+    adminId: userId,
     pageNum: 1,
     pageSize: 10,
   }) 
@@ -120,7 +123,6 @@ const User = () => {
     })
   }
 
-  const userId =  useSelector(state => state.user.userInfo.id)
   const delUser = async (id)=>{
     const delParams = {
       userId: id,

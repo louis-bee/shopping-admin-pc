@@ -110,6 +110,7 @@ const Goods = () => {
     sellerId: '',
     pageSize: 10,
     pageNum: 1,
+    userId: userId,
   }) 
 
   useEffect(()=>{
@@ -124,7 +125,8 @@ const Goods = () => {
   const onConfirm = async (data)=>{
     const delParams = {
       id: data.id,
-      sellerId: userId,
+      userId: userId,
+      role: 3,
     }
     await delGoodsAPI(delParams)
     setParams({
