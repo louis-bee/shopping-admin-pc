@@ -1,8 +1,7 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Goods.scss'
 import { Card, Button, Popconfirm, Table, Tag, Space, Form, Input, Popover } from 'antd'
 import { EditOutlined, DeleteOutlined, SearchOutlined, SnippetsOutlined } from '@ant-design/icons'
-import img404 from '@/assets/img/error.png'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { delGoodsAPI, getGoodsListAPI } from '@/apis/goods'
@@ -28,7 +27,7 @@ const Goods = () => {
       dataIndex: 'images',
       width: 100,
       render: images => {
-        return <img src={`${import.meta.env.VITE_API_URL}/uploads/${images[0]}` || img404} width={60} height={60} alt="" />
+        return <img src={`${import.meta.env.VITE_API_URL}/uploads/${images[0]}`} width={60} height={60} alt="" />
       }
     },
     {

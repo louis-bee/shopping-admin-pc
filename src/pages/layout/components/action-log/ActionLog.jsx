@@ -148,10 +148,10 @@ const ActionLog = () => {
     }
   }
 
-  const viewActionLog = (userId) =>{
-    console.log(userId);
+  // const viewActionLog = (userId) =>{
+  //   console.log(userId);
     
-  }
+  // }
 
   return (
     <div>

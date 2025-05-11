@@ -1,6 +1,5 @@
 import { Card, Button,  Table, Tag, Space, message, Form, Input } from 'antd'
-import { TruckOutlined, SearchOutlined, UndoOutlined } from '@ant-design/icons'
-import img404 from '@/assets/img/error.png'
+import { TruckOutlined, SearchOutlined } from '@ant-design/icons'
 import './Order.scss'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -24,7 +23,7 @@ const Order = () => {
       dataIndex: 'images',
       width: 100,
       render: images => {
-        return <img src={`${import.meta.env.VITE_API_URL}/uploads/${images[0]}` || img404} width={60} height={60} alt="" />
+        return <img src={`${import.meta.env.VITE_API_URL}/uploads/${images[0]}`} width={60} height={60} alt="" />
       }
     },
     {
