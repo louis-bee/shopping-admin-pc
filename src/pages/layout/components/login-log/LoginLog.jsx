@@ -42,6 +42,10 @@ const LoginLog = () => {
       render: data => roleType[data]
     },
     {
+      title: 'ip地址',
+      dataIndex: 'ip',
+    },
+    {
       title: '登录时间',
       dataIndex: 'loginTime'
     },
